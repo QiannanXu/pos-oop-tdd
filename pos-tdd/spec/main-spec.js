@@ -34,6 +34,7 @@ describe('pos', function () {
       printInventory(inputTest);
 
       expect(console.log).toHaveBeenCalledWith(expectText);
-    })
+    });
+
 
 });
