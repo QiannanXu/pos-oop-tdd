@@ -4,12 +4,17 @@ function Scanner(inputs){
 
   this.purchaseProduct = [];
   this.count = [];
+  this.promotions = loadPromotions();
 }
 
 Scanner.prototype.inputProcess = function(){
 
   this.weightingFlagProcess();
+  this.ticketComputeProcess();
 
+}
+
+Scanner.prototype.ticketComputeProcess = function(){
   for(var i=0,k=0;i<this.inputs.length;){
     var num = this.weight[i];
     var count = 1;
@@ -17,6 +22,7 @@ Scanner.prototype.inputProcess = function(){
     for(var j=i+1;j<this.inputs.length;j++){
       if(this.inputs[i] == this.inputs[j]){
         num = num + this.weight[j];
+
         count++;
       }else{
         break;
@@ -26,12 +32,9 @@ Scanner.prototype.inputProcess = function(){
     this.purchaseProduct[k] = this.inputs[i];
     this.count[k] = num;
 
-    // console.log(this.purchaseProduct[k]+" "+this.count[k]+" \n");
-
     i=i+count;
     k++;
   }
-
 }
 
 Scanner.prototype.weightingFlagProcess = function(){
