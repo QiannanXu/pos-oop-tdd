@@ -18,6 +18,9 @@ ShoppingCart.prototype.mainProcess = function(){
 
   this.printer = new Printer(this.shoppingPrint, this.promotionPrint, this.summaryPrint);
   this.printer.print();
+
+  this.totalPrice;
+  this.savePrice;
 }
 
 
@@ -25,19 +28,22 @@ ShoppingCart.prototype.computeOneItemPrice = function(){
   var productID = this.scanner.getPurchaseProduct();
   var count = this.scanner.getCount();
   var item;
+  this.totalPrice = 0;
 
   for(var i=0;i<productID.length;i++){
 
     item = this.getItemInformation(productID[i]);
     if(item != null){
         //'名称：可口可乐，数量：1瓶，单价：3.00(元)，小计：3.00(元)\n'
-        this.shoppingPrint += "名称："+item.name+"，数量："+count+item.unit+"，单价："+this.toDecimal2(item.price)+"(元)，小计："+this.toDecimal2(item.price*count)+"(元)\n";
+        this.shoppingPrint += "名称："+item.name+"，数量："+count[i]+item.unit+"，单价："+this.toDecimal2(item.price)+"(元)，小计："+this.toDecimal2(item.price*count[i])+"(元)\n";
         //'总计：3.00(元)\n'
-        this.summaryPrint = "总计："+this.toDecimal2(item.price*count)+"(元)\n";
+        this.totalPrice += item.price*count[i];
+        // console.log(item.price*count[i]+"   "+this.totalPrice+"\n");
+
 
     }
-
   }
+  this.summaryPrint = "总计："+this.toDecimal2(this.totalPrice)+"(元)\n";
 
 }
 
