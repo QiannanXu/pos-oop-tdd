@@ -12,10 +12,12 @@ Scanner.prototype.inputProcess = function(){
 
   for(var i=0,k=0;i<this.inputs.length;){
     var num = this.weight[i];
+    var count = 1;
 
-    for(var j=1;j<this.inputs.length;j++){
+    for(var j=i+1;j<this.inputs.length;j++){
       if(this.inputs[i] == this.inputs[j]){
         num = num + this.weight[j];
+        count++;
       }else{
         break;
       }
@@ -23,9 +25,10 @@ Scanner.prototype.inputProcess = function(){
 
     this.purchaseProduct[k] = this.inputs[i];
     this.count[k] = num;
-    // console.log(this.purchaseProduct[k]+" "+this.count[k]+"   /n");
 
-    i=i+j;
+    // console.log(this.purchaseProduct[k]+" "+this.count[k]+" \n");
+
+    i=i+count;
     k++;
   }
 
