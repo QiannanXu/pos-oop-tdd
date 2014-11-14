@@ -1,6 +1,6 @@
 function Scanner(inputs){
   this.inputs = inputs;
-  this.weightFlag = [];
+  this.weight = [];
 
   this.purchaseProduct = [];
   this.count = [];
@@ -11,11 +11,11 @@ Scanner.prototype.inputProcess = function(){
   this.weightingFlagProcess();
 
   for(var i=0,k=0;i<this.inputs.length;){
-    var num = this.weightFlag[i];
+    var num = this.weight[i];
 
     for(var j=1;j<this.inputs.length;j++){
       if(this.inputs[i] == this.inputs[j]){
-        num = num + this.weightFlag[j];
+        num = num + this.weight[j];
       }else{
         break;
       }
@@ -38,9 +38,9 @@ Scanner.prototype.weightingFlagProcess = function(){
     if(barcode.indexOf('-') != -1){
       var words = barcode.split('-');
       this.inputs[i] = words[0];
-      this.weightFlag[i] = words[1];
+      this.weight[i] = parseFloat(words[1]);
     }else{
-      this.weightFlag[i] = 1;
+      this.weight[i] = 1;
     }
   }
 }

@@ -98,24 +98,26 @@ describe('pos', function () {
           expect(console.log).toHaveBeenCalledWith(expectText);
         });
 
-    it('should print correct text when input ITEM000003-2', function (){
+    it('should print correct text when input ITEM000003-2 ITEM000003-2.1', function (){
       spyOn(console, 'log');
 
-      var inputTest = ['ITEM000003-2'];
+      var inputTest = ['ITEM000003-2','ITEM000003-2.1'];
       var expectText =
           '***<没钱赚商店>购物清单***\n' +
           '打印时间：' + formattedDate + '\n' +
           '----------------------\n' +
-          '名称：荔枝，数量：2斤，单价：15.00(元)，小计：30.00(元)\n' +
+          '名称：荔枝，数量：4.1斤，单价：15.00(元)，小计：61.50(元)\n' +
           '----------------------\n' +
           '挥泪赠送商品：\n' +
           '----------------------\n' +
-          '总计：30.00(元)\n' +
+          '总计：61.50(元)\n' +
           '**********************';
 
       printInventory(inputTest);
 
       expect(console.log).toHaveBeenCalledWith(expectText);
     });
+
+
 
 });
