@@ -36,8 +36,7 @@ describe('pos', function () {
       expect(console.log).toHaveBeenCalledWith(expectText);
     });
 
-
-    it('should print correct text when input ITEM000000', function (){
+  it('should print correct text when input ITEM000000', function (){
       spyOn(console, 'log');
 
       var inputTest = ['ITEM000000'];

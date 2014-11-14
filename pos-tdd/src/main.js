@@ -1,6 +1,5 @@
 function printInventory(inputs){
 
-  var printer = new Printer(inputs);
-  printer.printOutput();
-
+  var shoppingCart = new ShoppingCart(inputs);
+  shoppingCart.mainProcess();
 }
